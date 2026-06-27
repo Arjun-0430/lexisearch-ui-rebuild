@@ -259,50 +259,123 @@ export function SelectPill({
   )
 }
 
+/* ---------------- Mini sparkline (dependency-free SVG) ---------------- */
+function MiniSpark({
+  data,
+  positive,
+  className,
+}: {
+  data: number[]
+  positive: boolean
+  className?: string
+}) {
+  if (!data || data.length < 2) return null
+  const w = 80
+  const h = 28
+  const min = Math.min(...data)
+  const max = Math.max(...data)
+  const range = max - min || 1
+  const stroke = positive ? 'var(--color-risk-green)' : 'var(--color-risk-red)'
+  const pts = data.map((d, i) => {
+    const x = (i / (data.length - 1)) * w
+    const y = h - ((d - min) / range) * (h - 4) - 2
+    return [x, y] as const
+  })
+  const line = pts.map(([x, y]) => `${x.toFixed(1)},${y.toFixed(1)}`).join(' ')
+  const area = `0,${h} ${line} ${w},${h}`
+  const gid = `spk-${Math.abs(data.reduce((a, b) => a + b, 0) * data.length) | 0}`
+  return (
+    <svg
+      viewBox={`0 0 ${w} ${h}`}
+      preserveAspectRatio="none"
+      className={cn('h-7 w-20', className)}
+      aria-hidden="true"
+    >
+      <defs>
+        <linearGradient id={gid} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor={stroke} stopOpacity={0.28} />
+          <stop offset="100%" stopColor={stroke} stopOpacity={0} />
+        </linearGradient>
+      </defs>
+      <polygon points={area} fill={`url(#${gid})`} />
+      <polyline
+        points={line}
+        fill="none"
+        stroke={stroke}
+        strokeWidth={1.75}
+        strokeLinejoin="round"
+        strokeLinecap="round"
+      />
+    </svg>
+  )
+}
+
 /* ---------------- KPI stat card ---------------- */
 export function KpiCard({
   label,
   value,
   delta,
   trend,
+  goodWhenDown,
   hint,
+  sub,
+  spark,
+  index = 0,
   className,
 }: {
   label: string
   value: string
   delta?: string
   trend?: 'up' | 'down'
+  goodWhenDown?: boolean
   hint?: string
+  sub?: string
+  spark?: number[]
+  index?: number
   className?: string
 }) {
+  // Semantic delta color: "good" direction is green, "bad" is red.
+  const isGood = trend === 'down' ? !!goodWhenDown : !goodWhenDown
+  const deltaTone = !trend ? 'text-tmuted' : isGood ? 'text-risk-green' : 'text-risk-red'
+  const Arrow = trend === 'down' ? ArrowDownRight : ArrowUpRight
   return (
-    <NeuCard
-      goldAccent
-      className={cn('group min-w-[170px] p-4 transition-transform hover:-translate-y-0.5', className)}
+    <motion.div
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, delay: index * 0.04, ease: 'easeOut' }}
+      className={cn('min-w-[180px] flex-1', className)}
     >
-      <p className="text-xs font-medium text-tsecondary">{label}</p>
-      <p className="mt-2 font-mono text-2xl font-bold text-tprimary">{value}</p>
-      <div className="mt-1 flex items-center gap-2 text-xs">
-        {delta && (
-          <span
-            className={cn(
-              'font-medium',
-              trend === 'down' ? 'text-risk-green' : 'text-risk-green',
+      <NeuCard
+        goldAccent
+        className="group h-full p-4 transition-transform hover:-translate-y-0.5"
+      >
+        <div className="flex items-start justify-between gap-2">
+          <p className="text-xs font-medium text-tsecondary">{label}</p>
+          {hint && (
+            <span className="flex items-center gap-1 text-[10px] uppercase tracking-wider text-tmuted">
+              <StatusDot tone="gold" pulse /> {hint}
+            </span>
+          )}
+        </div>
+        <p className="mt-2 font-mono text-2xl font-bold text-tprimary tabular-nums">
+          {value}
+        </p>
+        <div className="mt-2 flex items-end justify-between gap-2">
+          <div className="min-w-0">
+            {delta && (
+              <span
+                className={cn('inline-flex items-center gap-0.5 text-xs font-semibold', deltaTone)}
+              >
+                {trend && <Arrow className="size-3" />}
+                {delta}
+              </span>
             )}
-          >
-            {delta}
-          </span>
-        )}
-        {hint && (
-          <span className="flex items-center gap-1 text-tmuted">
-            <StatusDot tone="gold" /> {hint}
-          </span>
-        )}
-        <span className="ml-auto hidden text-[10px] uppercase tracking-wider text-tmuted group-hover:inline">
-          vs prev
-        </span>
-      </div>
-    </NeuCard>
+            {sub && <p className="mt-0.5 truncate text-[10px] text-tmuted">{sub}</p>}
+          </div>
+          {spark && <MiniSpark data={spark} positive={isGood} />}
+        </div>
+      </NeuCard>
+    </motion.div>
   )
 }
 

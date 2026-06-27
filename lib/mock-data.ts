@@ -59,16 +59,22 @@ export interface Kpi {
   value: string
   delta?: string
   trend?: 'up' | 'down'
+  /** Set when a downward movement is the *good* outcome (e.g. latency, errors). */
+  goodWhenDown?: boolean
   hint?: string
+  /** Optional secondary context line shown under the value. */
+  sub?: string
+  /** Inline sparkline series for the KPI tile. */
+  spark?: number[]
 }
 
 export const dashboardKpis: Kpi[] = [
-  { label: 'Total Cases Indexed', value: '47,382,194', delta: '+2.3%', trend: 'up' },
-  { label: 'Searches Today', value: '8,492', delta: '+18%', trend: 'up' },
-  { label: 'Reports Generated', value: '312', delta: '+4%', trend: 'up' },
-  { label: 'Active Tenants', value: '24', delta: '+1', trend: 'up' },
-  { label: 'Pipeline Jobs Running', value: '7', hint: 'live' },
-  { label: 'Avg Response Time', value: '142ms', delta: '-9ms', trend: 'down' },
+  { label: 'Total Cases Indexed', value: '47,382,194', delta: '+2.3%', trend: 'up', sub: 'vs prev 46.3M', spark: [44.1, 44.6, 45.2, 45.4, 46.1, 46.8, 47.3] },
+  { label: 'Searches Today', value: '8,492', delta: '+18%', trend: 'up', sub: 'vs prev 7.2K', spark: [5.1, 6.2, 5.8, 7.1, 7.6, 8.0, 8.49] },
+  { label: 'Reports Generated', value: '312', delta: '+4%', trend: 'up', sub: 'vs prev 300', spark: [268, 274, 290, 285, 298, 305, 312] },
+  { label: 'Active Tenants', value: '24', delta: '+1', trend: 'up', sub: 'vs prev 23', spark: [20, 21, 21, 22, 23, 23, 24] },
+  { label: 'Pipeline Jobs Running', value: '7', hint: 'live', spark: [3, 5, 4, 6, 8, 6, 7] },
+  { label: 'Avg Response Time', value: '142ms', delta: '-9ms', trend: 'down', goodWhenDown: true, sub: 'vs prev 151ms', spark: [168, 161, 158, 154, 149, 151, 142] },
 ]
 
 export const pipelineStages = [
