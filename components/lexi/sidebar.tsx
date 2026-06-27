@@ -55,13 +55,13 @@ export function Sidebar() {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       className={cn(
-        'glass fixed inset-y-0 left-0 z-30 flex flex-col border-r border-white/10 transition-[width] duration-300',
+        'glass fixed inset-y-0 left-0 z-30 flex flex-col border-r border-foreground/10 transition-[width] duration-300',
         expanded ? 'w-60' : 'w-16',
       )}
     >
       {/* Brand */}
-      <div className="flex h-14 items-center gap-3 border-b border-white/10 px-4">
-        <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-gold text-[#14110a]">
+      <div className="flex h-14 items-center gap-3 border-b border-foreground/10 px-4">
+        <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-gold text-primary-foreground">
           <Scale className="size-5" />
         </div>
         <div className={cn('overflow-hidden transition-opacity', expanded ? 'opacity-100' : 'opacity-0')}>
@@ -88,7 +88,7 @@ export function Sidebar() {
                     'group relative flex h-10 w-full items-center gap-3 rounded-xl px-3 text-sm transition-colors',
                     active
                       ? 'bg-gold/10 text-gold'
-                      : 'text-tsecondary hover:bg-white/5 hover:text-tprimary',
+                      : 'text-tsecondary hover:bg-foreground/5 hover:text-tprimary',
                   )}
                 >
                   {active && (
@@ -111,10 +111,10 @@ export function Sidebar() {
       </nav>
 
       {/* Footer */}
-      <div className="border-t border-white/10 p-2">
+      <div className="border-t border-foreground/10 p-2">
         <button
           onClick={() => setSidebarPinned(!sidebarPinned)}
-          className="flex h-9 w-full items-center gap-3 rounded-xl px-3 text-sm text-tsecondary hover:bg-white/5 hover:text-tprimary"
+          className="flex h-9 w-full items-center gap-3 rounded-xl px-3 text-sm text-tsecondary hover:bg-foreground/5 hover:text-tprimary"
         >
           <PanelLeft className="size-5 shrink-0" />
           <span className={cn('whitespace-nowrap transition-opacity', expanded ? 'opacity-100' : 'opacity-0')}>

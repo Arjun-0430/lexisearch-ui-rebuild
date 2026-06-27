@@ -86,7 +86,7 @@ export function ReportsPage() {
                   'glass relative rounded-xl p-3.5 text-left transition-colors',
                   selected.id === r.id
                     ? 'border-gold/40'
-                    : 'hover:border-white/15',
+                    : 'hover:border-foreground/15',
                 )}
               >
                 {selected.id === r.id && (
@@ -116,7 +116,7 @@ export function ReportsPage() {
 
         {/* Report detail */}
         <GlassCard className="p-6">
-          <div className="flex flex-wrap items-start justify-between gap-4 border-b border-white/8 pb-5">
+          <div className="flex flex-wrap items-start justify-between gap-4 border-b border-foreground/8 pb-5">
             <div>
               <SectionLabel>Report #{selected.id}</SectionLabel>
               <h2 className="mt-1 text-2xl font-bold text-tprimary">
@@ -140,7 +140,7 @@ export function ReportsPage() {
           </div>
 
           {/* tabs */}
-          <div className="mt-5 flex items-center gap-1 border-b border-white/8">
+          <div className="mt-5 flex items-center gap-1 border-b border-foreground/8">
             {TABS.map((t) => (
               <button
                 key={t}
@@ -169,7 +169,7 @@ export function ReportsPage() {
                     <tr
                       key={c.cnr}
                       onClick={() => navigate('case-detail', c.cnr)}
-                      className="cursor-pointer border-t border-white/5 hover:bg-white/[0.03]"
+                      className="cursor-pointer border-t border-foreground/5 hover:bg-foreground/[0.03]"
                     >
                       <td className="px-6 py-3 font-mono text-xs text-gold">
                         {c.cnr}
@@ -220,7 +220,7 @@ function Identity() {
   return (
     <div className="grid gap-3 sm:grid-cols-2">
       {fields.map(([label, value]) => (
-        <div key={label} className="neu-raised rounded-xl border border-white/5 p-4">
+        <div key={label} className="neu-raised rounded-xl border border-foreground/5 p-4">
           <p className="text-xs text-tsecondary">{label}</p>
           <p className="mt-1 font-medium text-tprimary">{value}</p>
         </div>
@@ -267,7 +267,7 @@ function Sources() {
       {reportSources.map((s) => (
         <li
           key={s.name}
-          className="flex items-center gap-3 rounded-xl border border-white/5 bg-white/[0.02] px-4 py-3"
+          className="flex items-center gap-3 rounded-xl border border-foreground/5 bg-foreground/[0.02] px-4 py-3"
         >
           {s.ok ? (
             <CheckCircle2 className="size-4 text-risk-green" />

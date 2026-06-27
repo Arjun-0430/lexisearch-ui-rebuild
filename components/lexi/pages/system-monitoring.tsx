@@ -47,7 +47,7 @@ export function SystemMonitoringPage() {
                 <StatusDot tone={tone} pulse={tone !== 'green'} />
               </div>
               <p className="mt-2 text-[10px] font-bold uppercase tracking-wider"
-                 style={{ color: tone === 'green' ? '#38a169' : tone === 'yellow' ? '#d69e2e' : '#e53e3e' }}>
+                 style={{ color: tone === 'green' ? '#2f9e57' : tone === 'yellow' ? '#c98a12' : '#d83a3a' }}>
                 {s.status}
               </p>
               <p className="mt-1 font-mono text-sm text-tsecondary">{s.latency}</p>
@@ -61,7 +61,7 @@ export function SystemMonitoringPage() {
         <Panel title="Active Alerts" bodyClassName="p-0">
           <div className="scrollbar-thin max-h-[420px] overflow-y-auto p-3">
             {activeAlerts.filter((a) => !ackd.includes(a.id)).map((a) => (
-              <div key={a.id} className="mb-2 rounded-xl border border-white/8 bg-white/[0.02] p-3 last:mb-0">
+              <div key={a.id} className="mb-2 rounded-xl border border-foreground/8 bg-foreground/[0.02] p-3 last:mb-0">
                 <div className="flex items-start gap-2">
                   <StatusDot tone={a.sev === 'P0' ? 'red' : 'yellow'} className="mt-1.5" />
                   <div className="flex-1">
@@ -87,7 +87,7 @@ export function SystemMonitoringPage() {
         <Panel title="Dependency Matrix" bodyClassName="p-0">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-white/8 text-left text-[11px] uppercase tracking-wider text-tmuted">
+              <tr className="border-b border-foreground/8 text-left text-[11px] uppercase tracking-wider text-tmuted">
                 <th className="px-4 py-3 font-medium">Service</th>
                 <th className="px-4 py-3 font-medium">Status</th>
                 <th className="px-4 py-3 font-medium">Latency</th>
@@ -97,7 +97,7 @@ export function SystemMonitoringPage() {
               {infraHealth.map((s) => {
                 const tone = statusTone(s.status) as 'green' | 'yellow' | 'red'
                 return (
-                  <tr key={s.name} className="border-b border-white/5 last:border-0">
+                  <tr key={s.name} className="border-b border-foreground/5 last:border-0">
                     <td className="px-4 py-3 text-tprimary">{s.name}</td>
                     <td className="px-4 py-3">
                       <Badge tone={tone === 'green' ? 'green' : tone === 'yellow' ? 'amber' : 'red'}>
@@ -116,7 +116,7 @@ export function SystemMonitoringPage() {
         <Panel title="Audit Log" bodyClassName="p-0">
           <div className="scrollbar-thin max-h-[420px] overflow-y-auto p-3">
             {auditLog.map((l, i) => (
-              <div key={i} className="mb-2 flex gap-3 rounded-lg px-2 py-1.5 text-xs last:mb-0 hover:bg-white/[0.02]">
+              <div key={i} className="mb-2 flex gap-3 rounded-lg px-2 py-1.5 text-xs last:mb-0 hover:bg-foreground/[0.02]">
                 <span className="shrink-0 font-mono text-gold">{l.t}</span>
                 <span className="text-tsecondary">{l.text}</span>
               </div>

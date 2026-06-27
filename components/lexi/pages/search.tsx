@@ -66,7 +66,7 @@ export function SearchPage() {
                 className={cn(
                   'flex-1 rounded-lg py-2 text-xs font-semibold transition-all',
                   mode === m
-                    ? 'bg-gold/15 text-gold shadow-[inset_0_0_0_1px_rgba(201,168,76,0.4)]'
+                    ? 'bg-gold/15 text-gold shadow-[inset_0_0_0_1px_rgba(184,134,11,0.4)]'
                     : 'text-tsecondary',
                 )}
               >
@@ -261,7 +261,7 @@ function ProfileRow({
         checked={selected}
         onChange={onToggle}
         aria-label={`Select ${p.name}`}
-        className="size-4 accent-[#c9a84c]"
+        className="size-4 accent-[#b8860b]"
       />
       <div className="flex size-11 shrink-0 items-center justify-center rounded-full bg-surface-3 text-sm font-bold text-gold">
         {p.name
@@ -280,7 +280,7 @@ function ProfileRow({
         </p>
       </div>
       <div className="text-right">
-        <p className="rounded-md bg-white/5 px-2 py-1 text-xs font-medium text-tprimary">
+        <p className="rounded-md bg-foreground/5 px-2 py-1 text-xs font-medium text-tprimary">
           {p.cases} cases
         </p>
         <p className="mt-1 font-mono text-xs text-tsecondary">{p.match}% match</p>
@@ -293,7 +293,7 @@ function ProfileRow({
         <button
           onClick={onView}
           aria-label="Quick report"
-          className="neu-raised rounded-lg p-2 text-gold hover:bg-white/5"
+          className="neu-raised rounded-lg p-2 text-gold hover:bg-foreground/5"
         >
           <FileText className="size-4" />
         </button>

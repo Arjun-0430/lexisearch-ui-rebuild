@@ -55,7 +55,7 @@ export function RiskProfilesPage() {
               className={
                 active === f.value
                   ? 'rounded-lg bg-gold/15 px-3 py-1.5 text-xs font-semibold text-gold ring-1 ring-gold/25'
-                  : 'rounded-lg px-3 py-1.5 text-xs font-medium text-tsecondary hover:bg-white/5'
+                  : 'rounded-lg px-3 py-1.5 text-xs font-medium text-tsecondary hover:bg-foreground/5'
               }
             >
               {f.label}

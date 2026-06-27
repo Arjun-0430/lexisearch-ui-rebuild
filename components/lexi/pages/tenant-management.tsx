@@ -84,7 +84,7 @@ export function TenantManagementPage() {
                 <div className="neu-inset h-2.5 overflow-hidden rounded-full">
                   <div
                     className="h-full rounded-full"
-                    style={{ width: `${pct}%`, background: pct > 85 ? '#d69e2e' : '#c9a84c' }}
+                    style={{ width: `${pct}%`, background: pct > 85 ? '#c98a12' : '#b8860b' }}
                   />
                 </div>
               </div>
@@ -147,7 +147,7 @@ export function TenantManagementPage() {
                 ))}
               </div>
             ) : (
-              <div className="flex h-40 items-center justify-center rounded-xl border border-dashed border-white/10 text-sm text-tmuted">
+              <div className="flex h-40 items-center justify-center rounded-xl border border-dashed border-foreground/10 text-sm text-tmuted">
                 {tab} details
               </div>
             )}

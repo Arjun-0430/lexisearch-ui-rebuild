@@ -29,7 +29,7 @@ const TITLES: Record<Route, string> = {
 export function Topbar() {
   const { route, role } = useApp()
   return (
-    <header className="glass sticky top-0 z-20 flex h-14 items-center gap-4 border-b border-white/10 px-6">
+    <header className="glass sticky top-0 z-20 flex h-14 items-center gap-4 border-b border-foreground/10 px-6">
       <nav className="flex items-center gap-2 text-sm">
         <span className="text-tmuted">Lexisearch</span>
         <ChevronRight className="size-3.5 text-tmuted" />
@@ -40,7 +40,7 @@ export function Topbar() {
         <button className="neu-inset flex h-8 items-center gap-2 rounded-lg px-3 text-xs text-tsecondary transition hover:text-tprimary">
           <Search className="size-3.5" />
           <span className="hidden sm:inline">Quick search</span>
-          <span className="ml-1 hidden items-center gap-0.5 rounded bg-white/5 px-1.5 py-0.5 text-[10px] sm:flex">
+          <span className="ml-1 hidden items-center gap-0.5 rounded bg-foreground/5 px-1.5 py-0.5 text-[10px] sm:flex">
             <Command className="size-2.5" />K
           </span>
         </button>
@@ -57,7 +57,7 @@ export function Topbar() {
           <span className="absolute right-1.5 top-1.5 size-1.5 rounded-full bg-gold" />
         </button>
 
-        <div className="flex items-center gap-2 rounded-full border border-white/10 py-1 pl-1 pr-3">
+        <div className="flex items-center gap-2 rounded-full border border-foreground/10 py-1 pl-1 pr-3">
           <div className="flex size-7 items-center justify-center rounded-full bg-surface-3 text-[11px] font-bold text-gold">
             AR
           </div>

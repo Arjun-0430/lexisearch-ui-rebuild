@@ -20,9 +20,9 @@ import { cn } from '@/lib/utils'
 const roleStyle: Record<UserRole, string> = {
   SUPER_ADMIN: 'bg-gold/15 text-gold ring-gold/25',
   PLATFORM_ADMIN: 'bg-role-blue/15 text-role-blue ring-role-blue/25',
-  TENANT_ADMIN: 'bg-[#a78bfa]/15 text-[#a78bfa] ring-[#a78bfa]/25',
-  PLATFORM_HR: 'bg-[#2dd4bf]/15 text-[#2dd4bf] ring-[#2dd4bf]/25',
-  CUSTOMER_USER: 'bg-white/8 text-tsecondary ring-white/10',
+  TENANT_ADMIN: 'bg-[#7c5fce]/15 text-[#7c5fce] ring-[#7c5fce]/25',
+  PLATFORM_HR: 'bg-[#1f9e96]/15 text-[#1f9e96] ring-[#1f9e96]/25',
+  CUSTOMER_USER: 'bg-foreground/8 text-tsecondary ring-foreground/10',
 }
 
 const kpis = [
@@ -57,7 +57,7 @@ export function UserManagementPage() {
         <div className="scrollbar-thin overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-white/8 text-left text-[11px] uppercase tracking-wider text-tmuted">
+              <tr className="border-b border-foreground/8 text-left text-[11px] uppercase tracking-wider text-tmuted">
                 <th className="px-5 py-3 font-medium">Name / Email</th>
                 <th className="px-5 py-3 font-medium">Role</th>
                 <th className="px-5 py-3 font-medium">Tenant</th>
@@ -68,7 +68,7 @@ export function UserManagementPage() {
             </thead>
             <tbody>
               {users.map((u) => (
-                <tr key={u.email} className="border-b border-white/5 last:border-0 hover:bg-white/[0.02]">
+                <tr key={u.email} className="border-b border-foreground/5 last:border-0 hover:bg-foreground/[0.02]">
                   <td className="px-5 py-3">
                     <p className="font-medium text-tprimary">{u.name}</p>
                     <p className="text-xs text-tmuted">{u.email}</p>
@@ -101,7 +101,7 @@ export function UserManagementPage() {
             </tbody>
           </table>
         </div>
-        <div className="flex items-center justify-between border-t border-white/8 px-5 py-3 text-xs text-tmuted">
+        <div className="flex items-center justify-between border-t border-foreground/8 px-5 py-3 text-xs text-tmuted">
           <span>Showing {users.length} of 47 users</span>
           <div className="flex gap-2">
             <GhostButton className="h-7 px-2.5 py-0 text-xs">Prev</GhostButton>

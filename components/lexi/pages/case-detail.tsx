@@ -40,7 +40,7 @@ function Accordion({
         <span className="text-sm font-semibold text-tprimary">{title}</span>
         {open ? <ChevronDown className="size-4 text-tsecondary" /> : <ChevronRight className="size-4 text-tsecondary" />}
       </button>
-      {open && <div className="border-t border-white/8 p-5">{children}</div>}
+      {open && <div className="border-t border-foreground/8 p-5">{children}</div>}
     </GlassCard>
   )
 }
@@ -59,7 +59,7 @@ function PartyTable({ rows, label }: { rows: typeof petitioners; label: string }
         </thead>
         <tbody>
           {rows.map((r) => (
-            <tr key={r.name} className="border-t border-white/5">
+            <tr key={r.name} className="border-t border-foreground/5">
               <td className="py-2 text-tprimary">{r.name}</td>
               <td className="py-2 text-tsecondary">{r.role}</td>
               <td className="py-2 text-tsecondary">{r.advocate}</td>
@@ -136,12 +136,12 @@ export function CaseDetailPage() {
         </Accordion>
 
         <Accordion title="Case History / Orders Timeline" defaultOpen>
-          <ol className="relative ml-2 border-l border-white/10">
+          <ol className="relative ml-2 border-l border-foreground/10">
             {caseTimeline.map((e, i) => (
               <li key={i} className="mb-5 ml-5 last:mb-0">
                 <span className={cn(
                   'absolute -left-[6px] mt-1 size-3 rounded-full',
-                  i === caseTimeline.length - 1 ? 'bg-gold' : 'bg-surface-3 ring-1 ring-white/20',
+                  i === caseTimeline.length - 1 ? 'bg-gold' : 'bg-surface-3 ring-1 ring-foreground/20',
                 )} />
                 <p className="font-mono text-xs text-gold">{e.date}</p>
                 <p className="mt-0.5 text-sm text-tprimary">{e.text}</p>

@@ -123,7 +123,7 @@ export function AlertsPage() {
         title="Create Alert Rule"
         footer={<GhostButton onClick={() => setDrawer(false)}>Close</GhostButton>}
       >
-        <div className="flex h-48 items-center justify-center rounded-xl border border-dashed border-white/10 text-sm text-tmuted">
+        <div className="flex h-48 items-center justify-center rounded-xl border border-dashed border-foreground/10 text-sm text-tmuted">
           Coming soon
         </div>
       </SlideDrawer>

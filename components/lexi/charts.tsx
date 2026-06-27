@@ -19,21 +19,34 @@ import {
 } from 'recharts'
 
 export const C = {
-  gold: '#c9a84c',
-  red: '#e53e3e',
-  yellow: '#d69e2e',
-  green: '#38a169',
-  blue: '#4a90d9',
-  grid: 'rgba(255,255,255,0.06)',
-  axis: '#8b8fa8',
+  gold: '#b8860b',
+  red: '#d83a3a',
+  yellow: '#c98a12',
+  green: '#2f9e57',
+  blue: '#2f6fd0',
+  grid: 'rgba(27,31,42,0.07)',
+  axis: '#9aa1b2',
 }
 
+/* Elegant multi-color cycle for bars, donuts, and categorical series */
+export const PALETTE = [
+  '#4f5fd6', // indigo
+  '#1f9e96', // teal
+  '#e09a2d', // amber
+  '#e0567f', // rose
+  '#2f9e57', // emerald
+  '#8a6fd6', // violet
+  '#2f9bd0', // sky
+  '#e0683c', // coral
+]
+
 const tooltipStyle = {
-  background: '#2a2f3a',
-  border: '1px solid rgba(255,255,255,0.1)',
+  background: 'rgba(255,255,255,0.96)',
+  border: '1px solid rgba(27,31,42,0.1)',
   borderRadius: 12,
+  boxShadow: '0 8px 28px rgba(27,31,42,0.12)',
   fontSize: 12,
-  color: '#f0ede8',
+  color: '#1b1f2a',
 }
 
 const axis = { stroke: C.axis, fontSize: 11, tickLine: false, axisLine: false }
@@ -56,8 +69,8 @@ export function AreaSeries({
       <AreaChart data={data} margin={{ top: 8, right: 8, left: -16, bottom: 0 }}>
         <defs>
           <linearGradient id={`grad-${yKey}`} x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor={color} stopOpacity={0.5} />
-            <stop offset="100%" stopColor={color} stopOpacity={0} />
+            <stop offset="0%" stopColor={color} stopOpacity={0.45} />
+            <stop offset="100%" stopColor={color} stopOpacity={0.02} />
           </linearGradient>
         </defs>
         <CartesianGrid stroke={C.grid} vertical={false} />
@@ -68,7 +81,7 @@ export function AreaSeries({
           type="monotone"
           dataKey={yKey}
           stroke={color}
-          strokeWidth={2}
+          strokeWidth={2.25}
           fill={`url(#grad-${yKey})`}
         />
       </AreaChart>
@@ -112,7 +125,7 @@ export function MultiLine({
             dataKey={l.key}
             name={l.name}
             stroke={l.color}
-            strokeWidth={2}
+            strokeWidth={2.25}
             dot={false}
           />
         ))}
@@ -125,23 +138,31 @@ export function VBar({
   data,
   xKey,
   yKey,
-  color = C.gold,
+  color,
+  multicolor,
   height = 240,
 }: {
   data: any[]
   xKey: string
   yKey: string
   color?: string
+  multicolor?: boolean
   height?: number
 }) {
+  const useMulti = multicolor ?? !color
+  const base = color ?? C.gold
   return (
     <ResponsiveContainer width="100%" height={height}>
       <BarChart data={data} margin={{ top: 8, right: 8, left: -16, bottom: 0 }}>
         <CartesianGrid stroke={C.grid} vertical={false} />
         <XAxis dataKey={xKey} {...axis} minTickGap={8} />
         <YAxis {...axis} width={48} />
-        <Tooltip contentStyle={tooltipStyle} cursor={{ fill: 'rgba(255,255,255,0.04)' }} />
-        <Bar dataKey={yKey} fill={color} radius={[4, 4, 0, 0]} />
+        <Tooltip contentStyle={tooltipStyle} cursor={{ fill: 'rgba(27,31,42,0.04)' }} />
+        <Bar dataKey={yKey} radius={[6, 6, 0, 0]}>
+          {data.map((_, i) => (
+            <Cell key={i} fill={useMulti ? PALETTE[i % PALETTE.length] : base} />
+          ))}
+        </Bar>
       </BarChart>
     </ResponsiveContainer>
   )
@@ -151,15 +172,19 @@ export function HBar({
   data,
   catKey,
   valKey,
-  color = C.gold,
+  color,
+  multicolor,
   height = 280,
 }: {
   data: any[]
   catKey: string
   valKey: string
   color?: string
+  multicolor?: boolean
   height?: number
 }) {
+  const useMulti = multicolor ?? !color
+  const base = color ?? C.gold
   return (
     <ResponsiveContainer width="100%" height={height}>
       <BarChart
@@ -170,8 +195,12 @@ export function HBar({
         <CartesianGrid stroke={C.grid} horizontal={false} />
         <XAxis type="number" {...axis} />
         <YAxis type="category" dataKey={catKey} {...axis} width={110} />
-        <Tooltip contentStyle={tooltipStyle} cursor={{ fill: 'rgba(255,255,255,0.04)' }} />
-        <Bar dataKey={valKey} fill={color} radius={[0, 4, 4, 0]} />
+        <Tooltip contentStyle={tooltipStyle} cursor={{ fill: 'rgba(27,31,42,0.04)' }} />
+        <Bar dataKey={valKey} radius={[0, 6, 6, 0]}>
+          {data.map((_, i) => (
+            <Cell key={i} fill={useMulti ? PALETTE[i % PALETTE.length] : base} />
+          ))}
+        </Bar>
       </BarChart>
     </ResponsiveContainer>
   )
@@ -193,9 +222,9 @@ export function StackedArea({
         <XAxis dataKey={xKey} {...axis} minTickGap={24} />
         <YAxis {...axis} width={40} />
         <Tooltip contentStyle={tooltipStyle} />
-        <Area type="monotone" dataKey="green" stackId="1" stroke={C.green} fill={C.green} fillOpacity={0.4} />
-        <Area type="monotone" dataKey="yellow" stackId="1" stroke={C.yellow} fill={C.yellow} fillOpacity={0.4} />
-        <Area type="monotone" dataKey="red" stackId="1" stroke={C.red} fill={C.red} fillOpacity={0.4} />
+        <Area type="monotone" dataKey="green" stackId="1" stroke={C.green} fill={C.green} fillOpacity={0.45} />
+        <Area type="monotone" dataKey="yellow" stackId="1" stroke={C.yellow} fill={C.yellow} fillOpacity={0.45} />
+        <Area type="monotone" dataKey="red" stackId="1" stroke={C.red} fill={C.red} fillOpacity={0.45} />
       </AreaChart>
     </ResponsiveContainer>
   )
@@ -223,8 +252,8 @@ export function DonutChart({
             paddingAngle={2}
             stroke="none"
           >
-            {data.map((d) => (
-              <Cell key={d.name} fill={d.color} />
+            {data.map((d, i) => (
+              <Cell key={d.name} fill={d.color ?? PALETTE[i % PALETTE.length]} />
             ))}
           </Pie>
           <Tooltip contentStyle={tooltipStyle} />

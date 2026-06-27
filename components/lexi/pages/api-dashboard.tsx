@@ -55,7 +55,7 @@ export function ApiDashboardPage() {
                 <StatusDot tone={tone} pulse={tone !== 'green'} />
               </div>
               <p className="mt-2 text-[10px] font-bold uppercase tracking-wider"
-                 style={{ color: tone === 'green' ? '#38a169' : tone === 'yellow' ? '#d69e2e' : '#e53e3e' }}>
+                 style={{ color: tone === 'green' ? '#2f9e57' : tone === 'yellow' ? '#c98a12' : '#d83a3a' }}>
                 {a.health}
               </p>
               <p className="mt-1 font-mono text-lg font-bold text-tprimary">{a.latency}ms</p>
@@ -69,7 +69,7 @@ export function ApiDashboardPage() {
         <div className="scrollbar-thin overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-white/8 text-left text-[11px] uppercase tracking-wider text-tmuted">
+              <tr className="border-b border-foreground/8 text-left text-[11px] uppercase tracking-wider text-tmuted">
                 <th className="px-5 py-3 font-medium">API Name</th>
                 <th className="px-5 py-3 font-medium">Base URL</th>
                 <th className="px-5 py-3 font-medium">Type</th>
@@ -81,7 +81,7 @@ export function ApiDashboardPage() {
             </thead>
             <tbody>
               {apiSources.map((a) => (
-                <tr key={a.name} className="border-b border-white/5 last:border-0 hover:bg-white/[0.02]">
+                <tr key={a.name} className="border-b border-foreground/5 last:border-0 hover:bg-foreground/[0.02]">
                   <td className="px-5 py-3 font-medium text-tprimary">{a.name}</td>
                   <td className="px-5 py-3 font-mono text-xs text-tsecondary">{a.url}</td>
                   <td className="px-5 py-3"><Badge tone="neutral">{a.type}</Badge></td>
@@ -162,7 +162,7 @@ export function ApiDashboardPage() {
               <textarea
                 rows={4}
                 placeholder='{ "name": "{{name}}" }'
-                className="neu-inset w-full rounded-xl border border-white/5 p-3 font-mono text-xs text-tprimary placeholder:text-tmuted outline-none focus:border-gold/40"
+                className="neu-inset w-full rounded-xl border border-foreground/5 p-3 font-mono text-xs text-tprimary placeholder:text-tmuted outline-none focus:border-gold/40"
               />
             </div>
             <div><FieldLabel>Response Root Path</FieldLabel><NeuInput placeholder="data.results" /></div>
@@ -170,7 +170,7 @@ export function ApiDashboardPage() {
         )}
 
         {(tab === 'Field Mapping' || tab === 'Case Type Mapping') && (
-          <div className="flex h-48 items-center justify-center rounded-xl border border-dashed border-white/10 text-sm text-tmuted">
+          <div className="flex h-48 items-center justify-center rounded-xl border border-dashed border-foreground/10 text-sm text-tmuted">
             {tab} configuration
           </div>
         )}

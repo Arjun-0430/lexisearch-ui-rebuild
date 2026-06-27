@@ -28,16 +28,16 @@ export function LoginPage() {
   return (
     <div className="flex min-h-screen">
       {/* Brand panel */}
-      <div className="relative hidden w-1/2 flex-col justify-between overflow-hidden border-r border-white/10 p-12 lg:flex">
+      <div className="relative hidden w-1/2 flex-col justify-between overflow-hidden border-r border-foreground/10 p-12 lg:flex">
         <div
-          className="absolute inset-0 opacity-60"
+          className="absolute inset-0 opacity-90"
           style={{
             backgroundImage:
-              'radial-gradient(600px 400px at 30% 20%, rgba(201,168,76,0.18), transparent 60%), radial-gradient(500px 500px at 80% 90%, rgba(74,144,217,0.12), transparent 60%)',
+              'radial-gradient(600px 400px at 30% 20%, rgba(184,134,11,0.14), transparent 60%), radial-gradient(500px 500px at 80% 90%, rgba(47,111,208,0.10), transparent 60%)',
           }}
         />
         <div className="relative flex items-center gap-3">
-          <div className="flex size-10 items-center justify-center rounded-xl bg-gold text-[#14110a]">
+          <div className="flex size-10 items-center justify-center rounded-xl bg-gold text-primary-foreground">
             <Scale className="size-5" />
           </div>
           <span className="text-lg font-bold text-tprimary">Lexisearch AI</span>
@@ -107,9 +107,9 @@ export function LoginPage() {
           </div>
 
           <div className="my-6 flex items-center gap-3 text-[10px] uppercase tracking-widest text-tmuted">
-            <span className="h-px flex-1 bg-white/10" />
+            <span className="h-px flex-1 bg-foreground/10" />
             Dev quick login
-            <span className="h-px flex-1 bg-white/10" />
+            <span className="h-px flex-1 bg-foreground/10" />
           </div>
 
           <div className="grid grid-cols-2 gap-2">
@@ -117,7 +117,7 @@ export function LoginPage() {
               <button
                 key={q.role}
                 onClick={() => signIn(q.role)}
-                className="rounded-full border border-white/10 px-3 py-1.5 text-xs text-tsecondary transition hover:border-gold/40 hover:text-gold"
+                className="rounded-full border border-foreground/10 px-3 py-1.5 text-xs text-tsecondary transition hover:border-gold/40 hover:text-gold"
               >
                 {q.label}
               </button>

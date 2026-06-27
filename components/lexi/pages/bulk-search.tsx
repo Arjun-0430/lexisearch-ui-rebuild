@@ -92,14 +92,14 @@ export function BulkSearchPage() {
             {!file ? (
               <button
                 onClick={() => setFile({ name: 'candidates_june.csv', rows: 12 })}
-                className="neu-inset flex h-32 w-full flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-white/15 text-tsecondary transition hover:border-gold/40 hover:text-gold"
+                className="neu-inset flex h-32 w-full flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-foreground/15 text-tsecondary transition hover:border-gold/40 hover:text-gold"
               >
                 <UploadCloud className="size-7" />
                 <span className="text-sm">Drop your CSV here or click to browse</span>
                 <span className="text-xs text-tmuted">.csv files only</span>
               </button>
             ) : (
-              <div className="neu-inset flex items-center gap-3 rounded-xl border border-white/10 px-4 py-3">
+              <div className="neu-inset flex items-center gap-3 rounded-xl border border-foreground/10 px-4 py-3">
                 <FileUp className="size-5 text-gold" />
                 <div className="flex-1">
                   <p className="text-sm font-medium text-tprimary">{file.name}</p>
@@ -149,7 +149,7 @@ export function BulkSearchPage() {
                   {s}
                 </span>
                 {i < STAGES.length - 1 && (
-                  <span className="h-px w-6 bg-white/10" />
+                  <span className="h-px w-6 bg-foreground/10" />
                 )}
               </div>
             ))}
@@ -188,7 +188,7 @@ export function BulkSearchPage() {
             ]}
           >
             {resultRows.map((r) => (
-              <tr key={r.n} className="border-t border-white/5">
+              <tr key={r.n} className="border-t border-foreground/5">
                 <td className="px-5 py-3 font-mono text-sm text-tmuted">{r.n}</td>
                 <td className="px-5 py-3 font-mono text-xs text-tsecondary">
                   {r.raw}

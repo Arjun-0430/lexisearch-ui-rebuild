@@ -66,7 +66,7 @@ export function HrDashboardPage() {
         <div className="scrollbar-thin overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-white/8 text-left text-[11px] uppercase tracking-wider text-tmuted">
+              <tr className="border-b border-foreground/8 text-left text-[11px] uppercase tracking-wider text-tmuted">
                 <th className="px-5 py-3 font-medium">Person</th>
                 <th className="px-5 py-3 font-medium">Risk Score</th>
                 <th className="px-5 py-3 font-medium">Verified By</th>
@@ -77,7 +77,7 @@ export function HrDashboardPage() {
             </thead>
             <tbody>
               {recent.map((r) => (
-                <tr key={r.person} className="border-b border-white/5 last:border-0 hover:bg-white/[0.02]">
+                <tr key={r.person} className="border-b border-foreground/5 last:border-0 hover:bg-foreground/[0.02]">
                   <td className="px-5 py-3 font-medium text-tprimary">{r.person}</td>
                   <td className="px-5 py-3"><RiskBadge level={r.risk} /></td>
                   <td className="px-5 py-3 text-tsecondary">{r.by}</td>

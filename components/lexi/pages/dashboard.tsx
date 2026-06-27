@@ -91,7 +91,7 @@ export function DashboardPage() {
       </GlassCard>
 
       {/* Tabs */}
-      <div className="mb-5 flex items-center gap-1 border-b border-white/8">
+      <div className="mb-5 flex items-center gap-1 border-b border-foreground/8">
         {TABS.map((t) => (
           <button
             key={t}
@@ -171,7 +171,7 @@ function Overview() {
             {incidents.map((i, idx) => (
               <li
                 key={idx}
-                className="flex items-center gap-3 rounded-xl border border-white/5 bg-white/[0.02] px-3 py-2.5"
+                className="flex items-center gap-3 rounded-xl border border-foreground/5 bg-foreground/[0.02] px-3 py-2.5"
               >
                 {i.sev === 'CRIT' ? (
                   <TriangleAlert className="size-4 text-risk-red" />
@@ -210,7 +210,7 @@ function Overview() {
             ].map((a) => (
               <button
                 key={a.label}
-                className="neu-raised flex items-center gap-2.5 rounded-xl border border-white/5 px-4 py-3.5 text-sm font-medium text-tprimary transition-transform hover:-translate-y-0.5 hover:text-gold"
+                className="neu-raised flex items-center gap-2.5 rounded-xl border border-foreground/5 px-4 py-3.5 text-sm font-medium text-tprimary transition-transform hover:-translate-y-0.5 hover:text-gold"
               >
                 <a.icon className="size-4 text-gold" />
                 {a.label}
@@ -229,7 +229,7 @@ function Overview() {
             <tr
               key={t.name}
               className={cn(
-                'border-t border-white/5',
+                'border-t border-foreground/5',
                 t.riskScore >= 70 && 'bg-risk-red/[0.06]',
               )}
             >
@@ -293,7 +293,7 @@ function Reliability() {
             <div
               key={s.name}
               className={cn(
-                'neu-raised rounded-xl border border-white/5 p-4',
+                'neu-raised rounded-xl border border-foreground/5 p-4',
                 s.status === 'DEGRADED' &&
                   'shadow-[0_0_18px_rgba(214,158,46,0.25)]',
               )}
@@ -346,7 +346,7 @@ function Business() {
               <span className="w-20 text-xs text-tsecondary">{f.label}</span>
               <div className="neu-inset h-7 flex-1 overflow-hidden rounded-lg">
                 <div
-                  className="flex h-full items-center justify-end rounded-lg bg-gold/80 pr-2 text-[11px] font-bold text-[#14110a]"
+                  className="flex h-full items-center justify-end rounded-lg bg-gold/80 pr-2 text-[11px] font-bold text-primary-foreground"
                   style={{ width: `${f.pct}%` }}
                 >
                   {f.value}
@@ -430,7 +430,7 @@ function Forensics() {
       <Panel title={`Breakdown by ${dim}`} bodyClassName="p-0">
         <Table head={[dim, 'Searches', 'Errors', 'Avg Latency', 'Reports']}>
           {rows.map((r) => (
-            <tr key={r.v} className="border-t border-white/5">
+            <tr key={r.v} className="border-t border-foreground/5">
               <td className="px-5 py-3 text-sm font-medium text-tprimary">
                 {r.v}
               </td>

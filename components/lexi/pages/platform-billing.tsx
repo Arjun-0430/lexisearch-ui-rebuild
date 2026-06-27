@@ -43,7 +43,7 @@ export function PlatformBillingPage() {
                 {k.delta}
               </span>
               <div className="w-20">
-                <Sparkline data={spark} color={k.warn ? '#e53e3e' : '#c9a84c'} />
+                <Sparkline data={spark} color={k.warn ? '#d83a3a' : '#b8860b'} />
               </div>
             </div>
           </NeuCard>
@@ -58,7 +58,7 @@ export function PlatformBillingPage() {
         <div className="scrollbar-thin overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-white/8 text-left text-[11px] uppercase tracking-wider text-tmuted">
+              <tr className="border-b border-foreground/8 text-left text-[11px] uppercase tracking-wider text-tmuted">
                 <th className="px-5 py-3 font-medium">Tenant</th>
                 <th className="px-5 py-3 font-medium">Plan</th>
                 <th className="px-5 py-3 font-medium">Amount</th>
@@ -69,7 +69,7 @@ export function PlatformBillingPage() {
             </thead>
             <tbody>
               {billingRows.map((b) => (
-                <tr key={b.tenant} className="border-b border-white/5 last:border-0 hover:bg-white/[0.02]">
+                <tr key={b.tenant} className="border-b border-foreground/5 last:border-0 hover:bg-foreground/[0.02]">
                   <td className="px-5 py-3 font-medium text-tprimary">{b.tenant}</td>
                   <td className="px-5 py-3"><Badge tone="neutral">{b.plan}</Badge></td>
                   <td className="px-5 py-3 font-mono text-tprimary">₹{b.amount.toLocaleString('en-IN')}</td>

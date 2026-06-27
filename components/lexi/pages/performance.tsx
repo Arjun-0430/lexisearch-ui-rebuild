@@ -48,7 +48,7 @@ export function PerformancePage() {
           <DonutChart
             data={[
               { name: 'Hit', value: 87, color: C.gold },
-              { name: 'Miss', value: 13, color: '#4a4e5e' },
+              { name: 'Miss', value: 13, color: '#9aa1b2' },
             ]}
           />
           <div className="mt-2 flex justify-center gap-6 text-xs">

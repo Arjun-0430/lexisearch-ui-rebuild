@@ -48,7 +48,7 @@ export function SettingsPage() {
                 'whitespace-nowrap rounded-xl px-3.5 py-2 text-left text-sm transition-colors',
                 section === s
                   ? 'bg-gold/10 text-gold'
-                  : 'text-tsecondary hover:bg-white/5 hover:text-tprimary',
+                  : 'text-tsecondary hover:bg-foreground/5 hover:text-tprimary',
               )}
             >
               {s}
@@ -120,12 +120,12 @@ export function SettingsPage() {
                 <NeuToggle checked={mfa} onChange={setMfa} label="MFA" />
               </GlassCard>
               <GlassCard className="p-0">
-                <div className="border-b border-white/8 px-6 py-3.5">
+                <div className="border-b border-foreground/8 px-6 py-3.5">
                   <h3 className="text-sm font-semibold text-tprimary">Active Sessions</h3>
                 </div>
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-white/8 text-left text-[11px] uppercase tracking-wider text-tmuted">
+                    <tr className="border-b border-foreground/8 text-left text-[11px] uppercase tracking-wider text-tmuted">
                       <th className="px-6 py-3 font-medium">Device</th>
                       <th className="px-6 py-3 font-medium">IP</th>
                       <th className="px-6 py-3 font-medium">Location</th>
@@ -135,7 +135,7 @@ export function SettingsPage() {
                   </thead>
                   <tbody>
                     {sessions.map((s) => (
-                      <tr key={s.ip} className="border-b border-white/5 last:border-0">
+                      <tr key={s.ip} className="border-b border-foreground/5 last:border-0">
                         <td className="px-6 py-3 text-tprimary">{s.device}</td>
                         <td className="px-6 py-3 font-mono text-xs text-tsecondary">{s.ip}</td>
                         <td className="px-6 py-3 text-tsecondary">{s.location}</td>

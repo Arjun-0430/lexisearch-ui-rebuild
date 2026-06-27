@@ -32,7 +32,7 @@ export function NeuCard({
   return (
     <div
       className={cn(
-        'neu-raised rounded-2xl border border-white/5',
+        'neu-raised rounded-2xl border border-foreground/5',
         goldAccent && 'gold-top-accent',
         className,
       )}
@@ -108,7 +108,7 @@ export function Badge({
   className?: string
 }) {
   const map = {
-    neutral: 'bg-white/6 text-tsecondary ring-white/10',
+    neutral: 'bg-foreground/6 text-tsecondary ring-foreground/10',
     gold: 'bg-gold/15 text-gold ring-gold/25',
     green: 'bg-risk-green/15 text-risk-green ring-risk-green/25',
     red: 'bg-risk-red/15 text-risk-red ring-risk-red/25',
@@ -164,7 +164,7 @@ export function NeuInput({
   return (
     <input
       className={cn(
-        'neu-inset h-10 w-full rounded-xl border border-white/5 px-3.5 text-sm text-tprimary placeholder:text-tmuted outline-none transition focus:border-gold/40',
+        'neu-inset h-10 w-full rounded-xl border border-foreground/5 px-3.5 text-sm text-tprimary placeholder:text-tmuted outline-none transition focus:border-gold/40',
         className,
       )}
       {...props}
@@ -180,7 +180,7 @@ export function NeuSelect({
   return (
     <select
       className={cn(
-        'neu-inset h-10 w-full rounded-xl border border-white/5 px-3 text-sm text-tprimary outline-none transition focus:border-gold/40 [&>option]:bg-surface-3 [&>option]:text-tprimary',
+        'neu-inset h-10 w-full rounded-xl border border-foreground/5 px-3 text-sm text-tprimary outline-none transition focus:border-gold/40 [&>option]:bg-surface-3 [&>option]:text-tprimary',
         className,
       )}
       {...props}
@@ -216,14 +216,14 @@ export function NeuToggle({
       aria-label={label}
       onClick={() => onChange(!checked)}
       className={cn(
-        'relative h-6 w-11 shrink-0 rounded-full border border-white/5 transition-colors',
+        'relative h-6 w-11 shrink-0 rounded-full border border-foreground/5 transition-colors',
         checked ? 'bg-gold/80' : 'neu-inset',
       )}
     >
       <span
         className={cn(
           'absolute top-0.5 size-5 rounded-full bg-tprimary shadow transition-all',
-          checked ? 'left-[22px] bg-[#14110a]' : 'left-0.5',
+          checked ? 'left-[22px] bg-primary-foreground' : 'left-0.5',
         )}
       />
     </button>
@@ -249,7 +249,7 @@ export function SelectPill({
       className={cn(
         'rounded-full px-3.5 py-1.5 text-xs font-medium transition-all',
         active
-          ? 'bg-gold/15 text-gold shadow-[inset_0_0_0_1px_rgba(201,168,76,0.4)]'
+          ? 'bg-gold/15 text-gold shadow-[inset_0_0_0_1px_rgba(184,134,11,0.4)]'
           : 'neu-raised text-tsecondary hover:text-tprimary',
         className,
       )}
@@ -414,11 +414,11 @@ export function SlideDrawer({
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 30, stiffness: 280 }}
             className={cn(
-              'fixed inset-y-0 right-0 z-50 flex w-full flex-col border-l border-white/10 bg-surface-3 shadow-2xl',
+              'fixed inset-y-0 right-0 z-50 flex w-full flex-col border-l border-foreground/10 bg-surface-3 shadow-2xl',
               width,
             )}
           >
-            <div className="flex items-start justify-between border-b border-white/10 p-5">
+            <div className="flex items-start justify-between border-b border-foreground/10 p-5">
               <div>
                 <h3 className="text-lg font-bold text-tprimary">{title}</h3>
                 {subtitle && (
@@ -437,7 +437,7 @@ export function SlideDrawer({
               {children}
             </div>
             {footer && (
-              <div className="border-t border-white/10 p-5">{footer}</div>
+              <div className="border-t border-foreground/10 p-5">{footer}</div>
             )}
           </motion.aside>
         </>
@@ -488,7 +488,7 @@ export function Panel({
   return (
     <GlassCard className={cn('flex flex-col', className)}>
       {title && (
-        <div className="flex items-center justify-between gap-2 border-b border-white/8 px-5 py-3.5">
+        <div className="flex items-center justify-between gap-2 border-b border-foreground/8 px-5 py-3.5">
           <h3 className="text-sm font-semibold text-tprimary">{title}</h3>
           {action}
         </div>
@@ -507,7 +507,7 @@ export function GoldButton({
   return (
     <button
       className={cn(
-        'inline-flex items-center justify-center gap-2 rounded-xl bg-gold px-4 py-2 text-sm font-semibold text-[#14110a] transition-all hover:bg-gold-soft disabled:cursor-not-allowed disabled:opacity-40',
+        'inline-flex items-center justify-center gap-2 rounded-xl bg-gold px-4 py-2 text-sm font-semibold text-primary-foreground transition-all hover:bg-gold-soft disabled:cursor-not-allowed disabled:opacity-40',
         className,
       )}
       {...props}
@@ -525,7 +525,7 @@ export function GhostButton({
   return (
     <button
       className={cn(
-        'inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 px-4 py-2 text-sm font-medium text-tsecondary transition-all hover:border-white/20 hover:text-tprimary',
+        'inline-flex items-center justify-center gap-2 rounded-xl border border-foreground/10 px-4 py-2 text-sm font-medium text-tsecondary transition-all hover:border-foreground/20 hover:text-tprimary',
         className,
       )}
       {...props}
